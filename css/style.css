@@ -95,8 +95,8 @@
     }
   }
   
-  /* Navigation */
-  header {
+/* Base Styles for Header and Nav */
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -116,42 +116,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
   
+  /* Logo Styles */
   .logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-right: auto; /* Push logo to left */
   }
-
+  
   .nav-logo {
-    width: 80px;
-    height: 80px;
+    width: 60px;  /* Smaller on mobile */
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-  }
-
-  @media (min-width: 768px) {
-    .nav-logo {
-      width: 100px;
-      height: 100px;
-    }
-  }
-  
-  .logo-circle {
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 9999px;
-    background: var(--crave-gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo-text {
-    color: white;
-    font-weight: 700;
-    font-size: 1.25rem;
   }
   
   .brand-name {
@@ -159,32 +139,121 @@
     font-size: 1.25rem;
   }
   
+  /* Mobile Navigation Menu */
   nav {
-    display: none;
-  }
-  
-  @media (min-width: 768px) {
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    display: none; /* Hide on mobile initially */
+    width: 100%;   /* Take full width on mobile */
+    margin-top: 1rem;
+    order: 3;      /* Place below header buttons */
   }
   
   nav a {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: color 0.2s;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+    display: block;  /* Stack vertically on mobile */
+    text-align: center;
   }
   
   nav a:hover {
     color: var(--primary);
   }
   
+  /* Action Buttons */
   .header-buttons {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;  /* Smaller gap on mobile */
+    order: 2;
+  }
+  
+  /* Mobile Menu Toggle Button */
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--foreground);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  
+  nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (min-width: 768px) {
+    .nav-logo {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .mobile-menu-toggle {
+      display: none; /* Hide hamburger on tablet+ */
+    }
+    
+    nav {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      margin-top: 0;
+      order: 2;
+      justify-content: center;
+    }
+    
+    .header-buttons {
+      order: 3;
+      gap: 1rem;
+    }
+    
+    nav a {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .nav-logo {
+      width: 100px;
+      height: 100px;
+    }
+    
+    nav {
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      font-size: 1.125rem;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    nav {
+      gap: 2rem;
+    }
   }
   
   /* Buttons */
