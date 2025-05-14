@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "Taking the leap with confidence, knowing your coach has your back.",
         "Maintaining your zen even when life gets hectic - your coach understands.",
         "Travel delays? Your coach keeps you on track, no matter the situation.",
-        "Celebrating special moments while staying true to your health goals."
+        "Celebrating special moments while staying true to your health goals - your coach is with you!"
     ];
     
     let currentImageIndex = 0;
