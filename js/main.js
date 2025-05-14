@@ -213,23 +213,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // ----- Update Current Year in Footer -----
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Mobile Menu Toggle
+    // FIXED: Mobile Menu Toggle - removed the nested DOMContentLoaded
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
-
-    if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', function() {
-        mobileMenuToggle.classList.toggle('active');
+  
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
         mainNav.classList.toggle('mobile-open');
-    });
+        console.log('Mobile menu toggled'); // Add this for debugging
+      });
     }
 
     // Close mobile menu when clicking a nav item
     const navLinks = document.querySelectorAll('#mainNav a');
     navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuToggle.classList.remove('active');
-        mainNav.classList.remove('mobile-open');
+      link.addEventListener('click', () => {
+        if (mobileMenuToggle) { // Add this check
+          mobileMenuToggle.classList.remove('active');
+          mainNav.classList.remove('mobile-open');
+        }
+      });
     });
-    });
-  });
+});
