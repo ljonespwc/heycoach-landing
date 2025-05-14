@@ -374,6 +374,8 @@ header {
     gap: 2rem;
     position: relative;
     z-index: 1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     /* margin-bottom: 6rem; */
   }
   
@@ -381,6 +383,8 @@ header {
     .hero-flex {
       flex-direction: row;
       align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
   }
   
