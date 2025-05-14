@@ -41,13 +41,13 @@
           <nav id="mainNav">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
-            <a href="#pricing">Pricing</a>
+            <!-- Pricing link removed for early access phase -->
             <a href="#faq">FAQ</a>
           </nav>
           
           <div class="header-buttons">
             <button class="btn btn-outline btn-sm" style="display: none;">Login</button>
-            <button class="btn btn-primary btn-sm">Start Free Trial</button>
+            <button class="btn btn-primary btn-sm early-access-btn">Get Early Access</button>
           </div>
         </div>
       </header>
@@ -124,8 +124,8 @@
         </p>
         
         <div class="cta-button">
-          <button class="btn btn-primary big-cta">
-            Start 14-Day Free Trial
+          <button class="btn btn-primary big-cta early-access-btn">
+            Get Early Access
           </button>
         </div>
         
@@ -683,10 +683,10 @@
             </div>
         </section>
         
-        <!-- Pricing Section -->
+        <!-- Pricing Section (Commented Out for Early Access Phase) -->
+        <div style="display:none;">
         <section id="pricing" class="pricing">
             <div class="container">
-            <!-- Section Header -->
             <div class="section-header">
                 <h2 class="section-title">Simple, Transparent Pricing</h2>
                 <p class="section-desc">
@@ -694,9 +694,7 @@
                 </p>
             </div>
             
-            <!-- Pricing Cards -->
             <div class="pricing-grid">
-                <!-- Basic Plan -->
                 <div class="pricing-card">
                 <div class="pricing-content">
                     <h3 class="pricing-title">Starter</h3>
@@ -733,7 +731,6 @@
                 </div>
                 </div>
                 
-                <!-- Pro Plan -->
                 <div class="pricing-card pricing-card-popular">
                 <div class="popular-badge">Most Popular</div>
                 <div class="pricing-content pricing-content-popular">
@@ -777,7 +774,6 @@
                 </div>
                 </div>
                 
-                <!-- Scale Plan -->
                 <div class="pricing-card">
                 <div class="pricing-content">
                     <h3 class="pricing-title">Scale</h3>
@@ -821,7 +817,6 @@
                 </div>
             </div>
             
-            <!-- Additional Info -->
             <div class="pricing-footer">
                 <p>
                 All plans include unlimited Crave SOS and MoveBoost responses. <br>
@@ -830,6 +825,7 @@
             </div>
             </div>
         </section>
+        </div>
 
       <!-- FAQ Section -->
       <section id="faq" class="faq">
@@ -937,12 +933,7 @@
             </div>
           </div>
           
-          <!-- Additional Question -->
-          <div class="faq-more">
-            <p>
-              Have more questions? <a href="#" class="text-link">Contact our team</a>
-            </p>
-          </div>
+          <!-- Additional Question section removed for early access phase -->
         </div>
       </section>
 
@@ -957,13 +948,13 @@
               Join thousands of coaches who are scaling their impact while enhancing client results with HeyCoach.
             </p>
             <div>
-              <button class="btn btn-white big-cta">
-                Start 14-Day Free Trial
+              <button class="btn btn-white big-cta early-access-btn">
+                Get Early Access
               </button>
             </div>
             
             <div class="cta-no-card">
-              <p>No credit card required. Cancel anytime.</p>
+              <p>Be the first to know when we launch. No obligation.</p>
             </div>
           </div>
         </div>
@@ -1048,6 +1039,53 @@
       </div>
     </footer>
 
+    <!-- Early Access Modal -->
+    <div id="earlyAccessModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-header">
+          <h2>Get Early Access to HeyCoach</h2>
+          <p>Be among the first to experience how HeyCoach can transform your coaching business.</p>
+        </div>
+        <div class="modal-body">
+          <form id="earlyAccessForm" action="https://formspree.io/f/your-formspree-id" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="coachingType">What type of coaching do you do?</label>
+              <select id="coachingType" name="coachingType">
+                <option value="">Select an option</option>
+                <option value="health">Health & Fitness</option>
+                <option value="life">Life Coaching</option>
+                <option value="business">Business Coaching</option>
+                <option value="career">Career Coaching</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">What are you most excited about? (Optional)</label>
+              <textarea id="message" name="message" placeholder="Tell us what features you're most interested in"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary modal-submit">Join Early Access</button>
+          </form>
+          <div id="formSuccess" class="form-success" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <h3>Thank You!</h3>
+            <p>You've been added to our early access list. We'll notify you as soon as HeyCoach is ready for you to try.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Scripts -->
     <script src="js/main.js"></script>
   </body>

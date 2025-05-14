@@ -206,17 +206,92 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
-    
     window.addEventListener('scroll', checkReveal);
     window.addEventListener('load', checkReveal);
-    
+
     // ----- Update Current Year in Footer -----
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+      currentYearElement.textContent = new Date().getFullYear();
+    }
+
+    // ----- Early Access Modal -----
+    const modal = document.getElementById('earlyAccessModal');
+    const earlyAccessButtons = document.querySelectorAll('.early-access-btn');
+    const closeBtn = document.querySelector('.modal-close');
+    const form = document.getElementById('earlyAccessForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    // Open modal when early access buttons are clicked
+    earlyAccessButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+      });
+    });
+
+    // Close modal when X is clicked
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Re-enable scrolling
+      });
+    }
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Re-enable scrolling
+      }
+    });
+
+    // Handle form submission
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Show success message
+            form.style.display = 'none';
+            formSuccess.style.display = 'block';
+
+            // Reset form for future use
+            form.reset();
+
+            // Close modal after 3 seconds
+            setTimeout(() => {
+              modal.style.display = 'none';
+              document.body.style.overflow = ''; // Re-enable scrolling
+              // Hide success and show form again (for next time modal is opened)
+              setTimeout(() => {
+                formSuccess.style.display = 'none';
+                form.style.display = 'block';
+              }, 500);
+            }, 3000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again later.');
+        }
+      });
+    }
 
     // FIXED: Mobile Menu Toggle - removed the nested DOMContentLoaded
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
-  
+
     if (mobileMenuToggle && mainNav) {
       mobileMenuToggle.addEventListener('click', function() {
         this.classList.toggle('active');
