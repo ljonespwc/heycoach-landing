@@ -424,6 +424,15 @@ header {
     font-size: 0.9rem;
     opacity: 0;
     transition: opacity 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+  }
+  
+  .slider-caption::before {
+    content: '💭 ';
+    font-style: normal;
   }
   
   .slider-img {
@@ -1203,6 +1212,13 @@ header {
     .step-right {
       width: 50%;
     }
+  }
+  
+  .slider-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   }
   
   .step-card {

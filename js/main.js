@@ -29,16 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
         'images/heycoach-wedding-2.png'
     ];
     
-    // Add captions for each image
+    // Add captions for each image - Coach's Inner Thoughts
     const imageCaptions = [
-        "When every second counts, your coach is there for the emergency cravings.",
-        "No fear here! Your coach helps you get through anxiety-inducing situations.",
-        "Surviving the midnight snack zombie attack with your coach's guidance.",
-        "Finding balance between parenting and personal health has never been easier.",
-        "Taking the leap with confidence, knowing your coach has your back.",
-        "Maintaining your zen even when life gets hectic - your coach understands.",
-        "Travel delays? Your coach keeps you on track, no matter the situation.",
-        "Celebrating special moments while staying true to your health goals - your coach is with you!"
+        "*Sigh* Yes, cardio is still important with a broken leg... Let me cancel my dinner plans to research modified workouts.",
+        "Great, another 'pep talk' request at 3AM. My pillow was just getting comfortable.",
+        "'Walked by a bakery again'... that's the third 'emergency' text today. My family thinks I'm dating my phone.",
+        "Another midnight crisis text while I'm trying to put my kids to bed. Why do they always need motivation at MY bedtime?",
+        "Sure, let me drop everything to answer why protein shakes taste 'weird' today. It's only my anniversary dinner.",
+        "'Is this gluten-free?' texts from the grocery store aisle... for the fifth time this week. I should just move in there.",
+        "Another vacation interrupted by 'Can I have just ONE margarita?' texts. My spouse is giving me THAT look again.",
+        "Wedding cake panic text #37. Yes, one slice won't ruin six months of progress... just like I said yesterday."
     ];
     
     let currentImageIndex = 0;
