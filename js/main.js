@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        
         try {
           const response = await fetch(form.action, {
             method: 'POST',
@@ -259,16 +259,19 @@ document.addEventListener('DOMContentLoaded', function() {
               'Accept': 'application/json'
             }
           });
-
+          
           if (response.ok) {
             // Show success message
             form.style.display = 'none';
             formSuccess.style.display = 'block';
-
+            
             // Reset form for future use
             form.reset();
-
-            // Close modal after 3 seconds
+            
+            // Trigger confetti celebration
+            triggerConfetti();
+            
+            // Close modal after 6 seconds (extended from 3 seconds)
             setTimeout(() => {
               modal.style.display = 'none';
               document.body.style.overflow = ''; // Re-enable scrolling
@@ -277,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 formSuccess.style.display = 'none';
                 form.style.display = 'block';
               }, 500);
-            }, 3000);
+            }, 6000); // Extended from 3000 to 6000 ms
           } else {
             throw new Error('Form submission failed');
           }
@@ -286,6 +289,39 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('Something went wrong. Please try again later.');
         }
       });
+    }
+    
+    // Confetti celebration function
+    function triggerConfetti() {
+      // First burst
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#7b4bf1', '#F97316', '#D946EF', '#ff6d94']
+      });
+      
+      // Second burst after a short delay
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#7b4bf1', '#F97316', '#D946EF', '#ff6d94']
+        });
+      }, 250);
+      
+      // Third burst from the right
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#7b4bf1', '#F97316', '#D946EF', '#ff6d94']
+        });
+      }, 400);
     }
 
     // FIXED: Mobile Menu Toggle - removed the nested DOMContentLoaded
