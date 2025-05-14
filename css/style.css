@@ -1796,6 +1796,67 @@ header {
     font-size: 0.875rem;
   }
 
+/* Legal Pages Styles */
+.legal-section {
+  padding: 8rem 0 5rem;
+}
+
+.legal-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.legal-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.legal-header p {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--foreground);
+}
+
+.legal-content h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: var(--foreground);
+}
+
+.legal-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.legal-content ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.legal-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .legal-section {
+    padding: 7rem 0 3rem;
+  }
+  
+  .legal-header h1 {
+    font-size: 2rem;
+  }
+  
+  .legal-content h2 {
+    font-size: 1.25rem;
+  }
+}
+
 /* Modal Styles */
 .modal {
   display: none;
