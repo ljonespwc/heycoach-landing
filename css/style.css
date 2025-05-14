@@ -889,6 +889,7 @@ header {
   /* FAQ Section */
   .faq {
     padding: 5rem 0;
+    background-color: rgb(249, 250, 251);
   }
   
   .faq-container {
