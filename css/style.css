@@ -797,6 +797,38 @@ header {
     border-top: 1px solid var(--border);
   }
   
+  .chat-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border: 1px solid var(--border);
+    width: 100%;
+  }
+  
+  .chat-input-field {
+    flex: 1;
+    font-size: 0.875rem;
+    color: #6b7280;
+    border: none;
+    background: transparent;
+    outline: none;
+  }
+  
+  .chat-send-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+  }
+  
   .demo-tags {
     display: flex;
     gap: 0.5rem;
