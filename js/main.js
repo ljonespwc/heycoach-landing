@@ -80,16 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         imageCaption.style.opacity = '1';
     }
     
-    // Auto slide every 8 seconds
-    const slideInterval = setInterval(nextImage, 8000);
-    
-    // Stop auto sliding when user interacts with the slider
-    const imageSlider = document.querySelector('.image-slider');
-    if (imageSlider) {
-        imageSlider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-        });
-    }
+    // No auto-sliding - user controls the slider with navigation buttons only
     
     // ----- Demo Tabs -----
     const craveDemoBtn = document.getElementById('craveDemoBtn');
