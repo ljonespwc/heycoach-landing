@@ -1,0 +1,402 @@
+﻿// Define the message type to include the timer property
+type MessageOption = {
+  value: string;
+  label: string;
+};
+
+
+type Message = {
+  sender: 'coach' | 'user';
+  message: string;
+  time: string;
+  options?: MessageOption[];
+  timer?: boolean;
+};
+
+
+const HeroSection = () => {
+  const [activeDemo, setActiveDemo] = useState<'crave' | 'move'>('crave');
+  
+  const coachImages = [
+    "/lovable-uploads/671dbc15-ed87-4c85-aa07-ede7f85a2cd5.png",
+    "/lovable-uploads/69407b91-a02f-4162-8b72-2453e13a8117.png",
+    "/lovable-uploads/f20e7d03-5b87-4a31-8182-2f5f5cc35f57.png",
+    "/lovable-uploads/a96534c5-bcc3-4e1f-a1f2-97424eb9e547.png"
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % coachImages.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + coachImages.length) % coachImages.length);
+  };
+
+
+  // Sample conversation for Crave SOS Demo
+  const craveConversation: Message[] = [
+    { sender: 'coach', message: "Hi Tina, I see you're having a craving moment. Let's work through this together.", time: "09:35 AM" },
+    { sender: 'coach', message: "What's calling your name? (tap or type)", time: "09:35 AM" },
+    { sender: 'user', message: "🍫 Chocolate", time: "09:35 AM" },
+    { sender: 'coach', message: "How intense is the pull right now? (1-10)", time: "09:35 AM", 
+      options: [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+        { value: '8', label: '8' },
+        { value: '9', label: '9' },
+        { value: '10', label: '10' }
+      ] 
+    },
+    { sender: 'user', message: "9", time: "09:35 AM" },
+    { sender: 'coach', message: "Where are you right now?", time: "09:35 AM" },
+    { sender: 'user', message: "🏢 Work", time: "09:35 AM" },
+    { sender: 'coach', message: "What do you think may have triggered this craving?", time: "09:35 AM" },
+    { sender: 'user', message: "👥 Social pressure", time: "09:35 AM" },
+    { sender: 'coach', message: "I understand how challenging this can be. Instead of reaching for Chocolate, how about trying \"Smell Distraction\"? Inhale a strong, pleasant scent like peppermint oil, coffee beans, or citrus. Trainers suggest this sensory trick to interrupt cravings. Want to give it a try?", time: "09:35 AM" },
+    { sender: 'user', message: "👍 Yes, I'll try it", time: "09:35 AM" },
+    { sender: 'coach', message: "After your strategy, take a moment to notice how you feel. I'll check back with you in 15 minutes to see how you did. You've got this!", time: "09:35 AM" },
+    { sender: 'coach', message: "Hi again! Did the craving pass?", time: "09:35 AM" },
+    { sender: 'user', message: "Yes completely", time: "09:36 AM" },
+    { sender: 'coach', message: "How would you rate the effectiveness of the strategy in reducing your craving? (1-10)", time: "09:36 AM",
+      options: [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+        { value: '8', label: '8' },
+        { value: '9', label: '9' },
+        { value: '10', label: '10' }
+      ]
+    },
+    { sender: 'user', message: "8", time: "09:36 AM" },
+    { sender: 'coach', message: "Thanks for sharing. Every craving is an opportunity to learn what works for you. I'm proud of your effort today!", time: "09:36 AM" },
+  ];
+
+
+  // Sample conversation for Move Demo
+  const moveConversation: Message[] = [
+    { sender: 'coach', message: "Hey Lisa! You hit the 🏃 MoveBoost button. What's getting in your way today?", time: "09:35 AM" },
+    { sender: 'user', message: "I'm feeling really tired after work and the thought of a full workout seems impossible right now 😴", time: "09:35 AM" },
+    { sender: 'coach', message: "That's totally normal! Remember our \"5-minute rule\"? Just do 5 minutes of that mobility routine we practiced. I'll set a timer for you - often you'll find energy kicks in once you start!", time: "09:35 AM" },
+    { sender: 'coach', message: "Ready to start your 5-minute timer?", time: "09:35 AM", timer: true },
+    { sender: 'user', message: "Yes, let's do it", time: "09:36 AM" },
+    { sender: 'coach', message: "Great! Timer started. I'll check in when it's done.", time: "09:36 AM" },
+    { sender: 'coach', message: "Time's up! How did that feel?", time: "09:41 AM",
+      options: [
+        { value: 'great', label: 'Great! I want to keep going' },
+        { value: 'good', label: 'Good enough for today' },
+        { value: 'tough', label: 'That was tough' }
+      ]
+    },
+    { sender: 'user', message: "Great! I want to keep going", time: "09:41 AM" },
+    { sender: 'coach', message: "That's awesome! The 5-minute rule works again! How much longer would you like to go?", time: "09:42 AM",
+      options: [
+        { value: '10', label: '10 more minutes' },
+        { value: '20', label: '20 more minutes' },
+        { value: '30', label: '30 more minutes' }
+      ]
+    },
+    { sender: 'user', message: "20 more minutes", time: "09:42 AM" },
+    { sender: 'coach', message: "Perfect! I'll check back when you're done. Keep up the great work!", time: "09:42 AM" },
+  ];
+
+
+  return (
+    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-20 left-[5%] w-64 h-64 rounded-full bg-brand-soft-pink opacity-20 blur-3xl"></div>
+        <div className="absolute bottom-20 right-[15%] w-80 h-80 rounded-full bg-brand-soft-blue opacity-20 blur-3xl"></div>
+      </div>
+      
+      <div className="container relative z-10">
+        {/* New coach letter section */}
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-24">
+          <div className="w-full md:w-2/5">
+            {/* Image slider container sized to fit 50% of 1024x1536 = 512x768 */}
+            <div className="relative w-full max-w-[512px] mx-auto">
+              <div className="overflow-hidden rounded-2xl shadow-xl bg-brand-soft-blue">
+                <img 
+                  src={coachImages[currentImageIndex]} 
+                  alt="Coach mentoring a client" 
+                  className="w-full h-auto max-h-[768px] object-contain transition-opacity duration-300"
+                />
+              </div>
+              
+              {/* Navigation arrows for the slider */}
+              <button 
+                onClick={prevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-800" />
+              </button>
+              
+              <button 
+                onClick={nextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-800" />
+              </button>
+            </div>
+          </div>
+          
+          <div className="w-full md:w-3/5">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Dear Coach,</h3>
+              <div className="space-y-4 text-gray-700">
+                <p>
+                  I know how it feels. You're passionate about helping your clients succeed, but you can't be available 24/7 without sacrificing your own well-being and boundaries.
+                </p>
+                <p>
+                  You've seen it happen—clients struggling with cravings late at night or losing motivation for their workout when you're not there to guide them. By the time they connect with you again, the moment of opportunity has passed.
+                </p>
+                <p className="font-medium text-gray-900">
+                  That's why we created HeyCoach. Not to replace you, but to <span className="text-crave">amplify your impact</span> when you can't be there in person.
+                </p>
+                <p>
+                  HeyCoach combines your expertise with AI that responds in your coaching style at critical moments—helping clients stick to your plan and overcome obstacles in real-time.
+                </p>
+                <p className="font-medium text-crave">
+                  Work smarter, not harder. Be the coach who's always there for clients—without actually having to be there.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+          <div className="inline-block mb-6 px-4 py-2 bg-white rounded-full shadow-sm">
+            <span className="text-sm font-medium">
+              ⚡️Your new coaching superpower
+            </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Keep Clients on Track (Without Being on Call)
+          </h1>
+          
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+            HeyCoach delivers personalized guidance the second motivation dips or cravings hit—so you don't have to.
+          </p>
+          
+          <div className="mb-12">
+            <Button size="lg" className="bg-crave hover:bg-crave-dark text-white text-lg py-6 px-8 text-center shadow-lg shadow-purple-300/30 transition-all hover:shadow-purple-500/40">
+              Start 14-Day Free Trial
+            </Button>
+          </div>
+          
+          {/* Demo Selection Tabs */}
+          <div className="flex justify-center gap-4 mb-6">
+            <Button 
+              variant={activeDemo === 'crave' ? 'default' : 'outline'} 
+              onClick={() => setActiveDemo('crave')}
+              className={activeDemo === 'crave' ? 'bg-crave hover:bg-crave-dark' : 'border-crave text-crave hover:bg-crave/10'}
+            >
+              <span className="mr-2">🍪</span> Crave SOS Demo
+            </Button>
+            <Button 
+              variant={activeDemo === 'move' ? 'default' : 'outline'} 
+              onClick={() => setActiveDemo('move')}
+              className={activeDemo === 'move' ? 'bg-move hover:bg-move-dark' : 'border-move text-move hover:bg-move/10'}
+            >
+              <span className="mr-2">🏃</span> MoveBoost Demo
+            </Button>
+          </div>
+          
+          {/* Demo Carousel */}
+          <Carousel className="w-full max-w-3xl mx-auto">
+            <CarouselContent>
+              {/* CraveWave Demo */}
+              <CarouselItem className="w-full">
+                <div className={`${activeDemo === 'crave' ? 'block' : 'hidden'} bg-white rounded-2xl shadow-xl p-6 border border-gray-200`}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full overflow-hidden coach-avatar">
+                      <img 
+                        src="https://images.unsplash.com/photo-1560743173-567a3b5658b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=128&q=80" 
+                        alt="Coach Sarah" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Coach Lance's AI</h4>
+                      <p className="text-xs text-gray-500">Available 24/7</p>
+                    </div>
+                    <div className="ml-auto px-3 py-1 bg-brand-soft-pink text-pink-700 rounded-full text-xs font-medium">
+                      Crave SOS
+                    </div>
+                  </div>
+                  
+                  <ScrollArea className="h-[350px] md:h-[400px] pr-4">
+                    <div className="space-y-4">
+                      {craveConversation.map((msg, idx) => (
+                        <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                          <div className={`max-w-[85%]`}>
+                            {msg.sender === 'coach' ? (
+                              <div>
+                                <div className="bg-brand-soft-blue p-3 rounded-lg rounded-tl-none inline-block">
+                                  <p className="text-gray-800 text-left">{msg.message}</p>
+                                  {msg.options && (
+                                    <div className="flex flex-wrap gap-2 mt-3">
+                                      {msg.options.map((option, optIdx) => (
+                                        <button 
+                                          key={optIdx} 
+                                          className={`text-xs font-medium px-2 py-1 rounded-full border ${
+                                            option.value <= '3' ? 'bg-green-100 border-green-200 text-green-700' : 
+                                            option.value <= '7' ? 'bg-yellow-100 border-yellow-200 text-yellow-700' : 
+                                            'bg-red-100 border-red-200 text-red-700'
+                                          }`}
+                                        >
+                                          {option.label}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  )}
+                                  {msg.timer && (
+                                    <Button size="sm" className="bg-move text-white hover:bg-move-dark mt-3">
+                                      Start Timer
+                                    </Button>
+                                  )}
+                                </div>
+                                <p className="text-xs text-gray-500 ml-1 mt-1">{msg.time}</p>
+                              </div>
+                            ) : (
+                              <div>
+                                <div className="bg-gray-100 p-3 rounded-lg rounded-tr-none inline-block">
+                                  <p className="text-gray-800 text-left">{msg.message}</p>
+                                </div>
+                                <p className="text-xs text-gray-500 text-right mr-1 mt-1">{msg.time}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollArea>
+                  
+                  <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-200">
+                    <div className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm text-gray-400">
+                      Type your message...
+                    </div>
+                    <button className="bg-crave text-white rounded-full p-2 shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                    </button>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pt-3 mt-4 border-t border-gray-100">
+                    <div className="flex gap-2">
+                      <span className="inline-block px-2 py-1 text-xs font-medium bg-brand-soft-green text-green-700 rounded-full">Instant Response</span>
+                      <span className="inline-block px-2 py-1 text-xs font-medium bg-brand-soft-pink text-pink-700 rounded-full">Follow-up</span>
+                    </div>
+                    
+                    <div className="text-xs text-gray-500">95% Success Rate</div>
+                  </div>
+                </div>
+
+
+                {/* MoveWave Demo */}
+                <div className={`${activeDemo === 'move' ? 'block' : 'hidden'} bg-white rounded-2xl shadow-xl p-6 border border-gray-200`}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full overflow-hidden coach-avatar">
+                      <img 
+                        src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=128&q=80" 
+                        alt="Coach Mark" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Coach Mark's AI</h4>
+                      <p className="text-xs text-gray-500">Available 24/7</p>
+                    </div>
+                    <div className="ml-auto px-3 py-1 bg-brand-soft-yellow text-orange-700 rounded-full text-xs font-medium">
+                      MoveBoost
+                    </div>
+                  </div>
+                  
+                  <ScrollArea className="h-[350px] md:h-[400px] pr-4">
+                    <div className="space-y-4">
+                      {moveConversation.map((msg, idx) => (
+                        <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                          <div className={`max-w-[85%]`}>
+                            {msg.sender === 'coach' ? (
+                              <div>
+                                <div className="bg-brand-soft-blue p-3 rounded-lg rounded-tl-none inline-block">
+                                  <p className="text-gray-800 text-left">{msg.message}</p>
+                                  {msg.options && (
+                                    <div className="flex flex-col gap-2 mt-3">
+                                      {msg.options.map((option, optIdx) => (
+                                        <button 
+                                          key={optIdx} 
+                                          className="text-sm text-left font-medium px-3 py-2 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
+                                        >
+                                          {option.label}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  )}
+                                  {msg.timer && (
+                                    <Button size="sm" className="bg-move text-white hover:bg-move-dark mt-3">
+                                      Start Timer
+                                    </Button>
+                                  )}
+                                </div>
+                                <p className="text-xs text-gray-500 ml-1 mt-1">{msg.time}</p>
+                              </div>
+                            ) : (
+                              <div>
+                                <div className="bg-gray-100 p-3 rounded-lg rounded-tr-none inline-block">
+                                  <p className="text-gray-800 text-left">{msg.message}</p>
+                                </div>
+                                <p className="text-xs text-gray-500 text-right mr-1 mt-1">{msg.time}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollArea>
+                  
+                  <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-200">
+                    <div className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm text-gray-400">
+                      Type your message...
+                    </div>
+                    <button className="bg-move text-white rounded-full p-2 shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                    </button>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pt-3 mt-4 border-t border-gray-100">
+                    <div className="flex gap-2">
+                      <span className="inline-block px-2 py-1 text-xs font-medium bg-brand-soft-green text-green-700 rounded-full">Instant Response</span>
+                      <span className="inline-block px-2 py-1 text-xs font-medium bg-move text-white rounded-full">Action Timer</span>
+                    </div>
+                    
+                    <div className="text-xs text-gray-500">89% Completion Rate</div>
+                  </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+export default HeroSection;

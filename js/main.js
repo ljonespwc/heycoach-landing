@@ -151,16 +151,44 @@ document.addEventListener('DOMContentLoaded', function() {
       // Force reflow
       void demoElement.offsetWidth;
       
-      // Re-add animation classes
+      // Re-add animation classes with staggered delays
       chatBubbles.forEach((bubble, index) => {
         // Remove and re-add the class to restart animation
         bubble.classList.remove('chat-delay-1', 'chat-delay-2', 'chat-delay-3');
         
-        // Add appropriate delay class
-        if (index === 0) bubble.classList.add('chat-delay-1');
-        if (index === 1) bubble.classList.add('chat-delay-2');
-        if (index === 2) bubble.classList.add('chat-delay-3'); 
-        if (index === 3) bubble.classList.add('chat-delay-3');
+        // Calculate appropriate delay class based on index
+        let delayClass;
+        if (index < 2) delayClass = 'chat-delay-1';
+        else if (index < 4) delayClass = 'chat-delay-2';
+        else delayClass = 'chat-delay-3';
+        
+        bubble.classList.add(delayClass);
+        
+        // Add a small additional delay for each bubble
+        setTimeout(() => {
+          bubble.style.opacity = '1';
+        }, 200 * index);
+      });
+      
+      // Add click handlers to chat option buttons
+      const chatOptions = demoElement.querySelectorAll('.chat-option, .number-option');
+      chatOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Find the parent bubble
+          const parentBubble = this.closest('.chat-bubble');
+          
+          // Find all options in this bubble
+          const allOptions = parentBubble.querySelectorAll('.chat-option, .number-option');
+          
+          // Highlight the clicked option
+          allOptions.forEach(opt => {
+            opt.style.backgroundColor = '';
+            opt.style.borderColor = '';
+          });
+          
+          this.style.backgroundColor = 'var(--brand-soft-pink)';
+          this.style.borderColor = 'var(--primary)';
+        });
       });
     }
     

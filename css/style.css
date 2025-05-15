@@ -685,6 +685,9 @@ header {
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 1rem;
+    padding: 0.5rem;
+    max-height: 350px;
+    overflow-y: auto;
   }
   
   .chat-bubble {
@@ -693,6 +696,73 @@ header {
     max-width: 18rem;
     animation: bubbleIn 0.4s ease forwards;
     opacity: 0;
+    position: relative;
+  }
+  
+  .chat-time {
+    font-size: 0.65rem;
+    color: rgb(156, 163, 175);
+    margin-top: 0.25rem;
+    display: block;
+  }
+  
+  .chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  
+  .chat-option {
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .chat-option:hover {
+    background-color: var(--brand-soft-pink);
+    border-color: var(--primary);
+  }
+  
+  .number-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  
+  .number-option {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .number-1 { background-color: #4ade80; }
+  .number-2 { background-color: #65d394; }
+  .number-3 { background-color: #7fc8a8; }
+  .number-4 { background-color: #99bebc; }
+  .number-5 { background-color: #b3b3d0; }
+  .number-6 { background-color: #cca9e4; }
+  .number-7 { background-color: #e69ef8; }
+  .number-8 { background-color: #f487da; }
+  .number-9 { background-color: #ff7070; }
+  .number-10 { background-color: #ff5757; }
+  
+  .number-option:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
   }
   
   .chat-coach {
