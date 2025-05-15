@@ -1182,6 +1182,11 @@ header {
     margin-bottom: 4rem;
   }
   
+  /* Remove margin from last process step */
+  .process-step:last-child {
+    margin-bottom: 0;
+  }
+  
   @media (min-width: 768px) {
     .process-step {
       flex-direction: row;
