@@ -43,17 +43,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.querySelector('.slider-prev');
     const nextButton = document.querySelector('.slider-next');
     
+    // Preload all images
+    const preloadedImages = [];
+    function preloadImages() {
+        for (let i = 0; i < heroImages.length; i++) {
+            const img = new Image();
+            img.src = heroImages[i];
+            preloadedImages.push(img);
+        }
+    }
+    preloadImages();
+    
     function updateHeroImage() {
         // Fade out image and caption
         heroImage.style.opacity = '0';
         imageCaption.style.opacity = '0';
         
-        // Wait for fade out, then change image, caption and fade in
+        // Wait for fade out
         setTimeout(() => {
-        heroImage.src = heroImages[currentImageIndex];
-        imageCaption.textContent = imageCaptions[currentImageIndex];
-        heroImage.style.opacity = '1';
-        imageCaption.style.opacity = '1';
+            // Update the caption text
+            imageCaption.textContent = imageCaptions[currentImageIndex];
+            
+            // Create a new image and wait for it to load
+            const newImg = new Image();
+            newImg.onload = function() {
+                // Once loaded, update the src and fade in
+                heroImage.src = heroImages[currentImageIndex];
+                heroImage.style.opacity = '1';
+                imageCaption.style.opacity = '1';
+            };
+            newImg.src = heroImages[currentImageIndex];
+            
+            // Fallback in case image is already cached and onload doesn't fire
+            if (newImg.complete) {
+                heroImage.src = heroImages[currentImageIndex];
+                heroImage.style.opacity = '1';
+                imageCaption.style.opacity = '1';
+            }
         }, 300);
     }
     
