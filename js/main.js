@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add captions for each image - Coach's Inner Thoughts
     const imageCaptions = [
-        "",
-        "'Sure, let me just get off this stretcher and I'll help you with modified workouts.'",
-        "",
-        "",
-        "",
-        ""
+        "'Funny how clients only need pep talks when I'm literally falling through the sky.'",
+        "'Sure, let me just hop off this stretcher and demonstrate proper form.'",
+        "'Great timing. Okay well try your best to namast-ay out of that bakery.'",
+        "'The dentist is totally judging me for your text right now.'",
+        "'You gotta ask about protein when I'm about to be wanded by airport security?'",
+        "'Fighting for my life against the undead, but please, tell me more.'"
     ];
     
     let currentImageIndex = 0;
