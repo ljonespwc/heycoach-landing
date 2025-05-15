@@ -1555,33 +1555,7 @@ header {
     color: rgb(75, 85, 99);
   }
   
-  .cfo-quote {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-  }
-  
-  .quote-card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 36rem;
-    text-align: center;
-  }
-  
-  .quote-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
-  
-  .quote-text {
-    color: rgb(55, 65, 81);
-    font-size: 1.125rem;
-    font-style: italic;
-  }
+  /* CFO Sound-Bite styling removed */
   
   @keyframes gradient-shift {
     0% {
