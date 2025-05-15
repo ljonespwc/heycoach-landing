@@ -1317,6 +1317,13 @@ header {
     color: rgb(75, 85, 99);
   }
   
+  .step-summary-heading {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
   .step-subtitle {
     font-size: 1.25rem;
     font-weight: 600;
