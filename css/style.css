@@ -1495,46 +1495,60 @@ header {
     color: rgb(55, 65, 81);
   }
   
-  .value-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  /* Listicle Container */
+  .listicle-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 48rem;
+    margin: 0 auto;
   }
   
-  @media (min-width: 768px) {
-    .value-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .value-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  .value-card {
+  /* Listicle Item */
+  .listicle-item {
+    position: relative;
     background-color: white;
-    padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .listicle-item:hover {
+    transform: scale(1.03);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
   }
   
-  .value-card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  /* Alternating color schemes for progress bars only */
+  /* Color schemes are defined in the progress bar section */
+  
+  /* Hide numbered indicators */
+  .listicle-number {
+    display: none;
   }
   
-  .value-icon {
-    display: inline-flex;
+  /* Horizontal layout */
+  .listicle-content {
+    display: flex;
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+  
+  /* Icon styling */
+  .listicle-icon {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    min-width: 3.5rem;
+    height: 3.5rem;
     border-radius: 9999px;
     background-color: rgb(243, 244, 246);
     padding: 0.75rem;
-    margin-bottom: 1.5rem;
+    margin-right: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .listicle-item:hover .listicle-icon {
+    transform: scale(1.1);
   }
   
   .crave-icon {
@@ -1545,17 +1559,69 @@ header {
     color: var(--secondary);
   }
   
-  .value-card-title {
+  /* Text content */
+  .listicle-text {
+    flex: 1;
+  }
+  
+  .listicle-title {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    color: #333;
   }
   
-  .value-card-desc {
+  .listicle-desc {
     color: rgb(75, 85, 99);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
   }
   
-  /* CFO Sound-Bite styling removed */
+  /* Progress bars */
+  .progress-container {
+    height: 0.25rem;
+    background-color: transparent;
+    overflow: hidden;
+    margin: 0 1.5rem 0.75rem;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 2px;
+  }
+  
+  .item-primary .progress-bar {
+    background: var(--crave-gradient);
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+  
+  .item-secondary .progress-bar {
+    background: var(--move-gradient);
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .listicle-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .listicle-icon {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+    
+    .listicle-number {
+      left: 0.5rem;
+      top: 0.5rem;
+    }
+  }
+  
+  /* Old value-grid and value-card styles removed */
   
   @keyframes gradient-shift {
     0% {
