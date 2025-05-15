@@ -583,40 +583,46 @@ header {
     margin-bottom: 1.5rem;
   }
   
+  /* Demo Tab Buttons - Updated Styling */
   .tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.25rem;
-    border-radius: var(--radius);
+    border-radius: 9999px;
     font-weight: 500;
+    font-size: 0.875rem;
     transition: all 0.2s ease;
     cursor: pointer;
+    border: 1px solid transparent;
   }
   
-  .tab-button.active-crave {
-    background-color: var(--primary);
-    color: white;
-  }
-  
-  .tab-button.active-move {
-    background-color: var(--secondary);
-    color: white;
-  }
-  
-  .tab-button.inactive-crave {
-    border: 1px solid var(--primary);
+  /* Crave SOS Demo Button - Active State */
+  .active-crave {
+    background-color: rgba(123, 75, 241, 0.15);
     color: var(--primary);
+    border: 1px solid var(--primary);
   }
   
-  .tab-button.inactive-crave:hover {
-    background-color: rgba(123, 75, 241, 0.1);
+  /* Crave SOS Demo Button - Inactive State */
+  .inactive-crave {
+    background-color: transparent;
+    color: rgb(107, 114, 128);
+    border: 1px solid rgb(229, 231, 235);
   }
   
-  .tab-button.inactive-move {
-    border: 1px solid var(--secondary);
+  /* Move Boost Demo Button - Active State */
+  .active-move {
+    background-color: rgba(249, 115, 22, 0.15);
     color: var(--secondary);
+    border: 1px solid var(--secondary);
   }
   
-  .tab-button.inactive-move:hover {
-    background-color: rgba(249, 115, 22, 0.1);
+  /* Move Boost Demo Button - Inactive State */
+  .inactive-move {
+    background-color: transparent;
+    color: rgb(107, 114, 128);
+    border: 1px solid rgb(229, 231, 235);
   }
   
   /* Demo Carousel */
