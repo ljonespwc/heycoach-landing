@@ -1543,13 +1543,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 3.5rem;
-    height: 3.5rem;
+    min-width: 4rem;
+    height: 4rem;
     border-radius: 9999px;
-    background-color: rgb(243, 244, 246);
     padding: 0.75rem;
     margin-right: 1.25rem;
     transition: transform 0.3s ease;
+    font-size: 2.5rem;
+    line-height: 1;
   }
   
   .listicle-item:hover .listicle-icon {
@@ -1557,10 +1558,12 @@ header {
   }
   
   .crave-icon {
+    background-color: rgba(123, 75, 241, 0.1);
     color: var(--primary);
   }
   
   .move-icon {
+    background-color: rgba(255, 122, 0, 0.1);
     color: var(--secondary);
   }
   
