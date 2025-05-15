@@ -19,26 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ----- Hero Image Slider -----
     const heroImages = [
-        'images/heycoach-ambulance.png',
-        'images/heycoach-dentist-2.png',
-        'images/heycoach-zombies-2.png',
-        'images/heycoach-baby-2.png',
         'images/heycoach-skydive-2.png',
+        'images/heycoach-ambulance.png',
         'images/heycoach-yoga-2.png',
+        'images/heycoach-dentist-2.png',
         'images/heycoach-airport-2.png',
-        'images/heycoach-wedding-2.png'
+        'images/heycoach-zombies-2.png'
     ];
     
     // Add captions for each image - Coach's Inner Thoughts
     const imageCaptions = [
-        "*Sigh* Yes, cardio is still important with a broken leg... Let me cancel my dinner plans to research modified workouts.",
-        "Great, another 'pep talk' request at 3AM. My pillow was just getting comfortable.",
-        "'Walked by a bakery again'... that's the third 'emergency' text today. My family thinks I'm dating my phone.",
-        "Another midnight crisis text while I'm trying to put my kids to bed. Why do they always need motivation at MY bedtime?",
-        "Sure, let me drop everything to answer why protein shakes taste 'weird' today. It's only my anniversary dinner.",
-        "'Is this gluten-free?' texts from the grocery store aisle... for the fifth time this week. I should just move in there.",
-        "Another vacation interrupted by 'Can I have just ONE margarita?' texts. My spouse is giving me THAT look again.",
-        "Wedding cake panic text #37. Yes, one slice won't ruin six months of progress... just like I said yesterday."
+        "",
+        "'Sure, let me just get off this stretcher and I'll help you with modified workouts.'",
+        "",
+        "",
+        "",
+        ""
     ];
     
     let currentImageIndex = 0;
