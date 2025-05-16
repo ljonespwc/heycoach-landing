@@ -769,13 +769,13 @@ header {
   }
   
   .chat-coach {
-    background-color: var(--brand-soft-blue);
+    background-color: white;
     border-top-left-radius: 0;
     align-self: flex-start;
   }
   
   .chat-client {
-    background-color: rgb(243, 244, 246);
+    background-color: rgba(123, 75, 241, 0.1);
     border-top-right-radius: 0;
     align-self: flex-end;
   }
