@@ -607,6 +607,7 @@ header {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-top: 3rem;
     margin-bottom: 1.5rem;
   }
   
@@ -633,9 +634,10 @@ header {
   
   /* Crave SOS Demo Button - Inactive State */
   .inactive-crave {
-    background-color: transparent;
+    background-color: white;
     color: rgb(107, 114, 128);
     border: 1px solid rgb(229, 231, 235);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   }
   
   /* Move Boost Demo Button - Active State */
@@ -647,9 +649,10 @@ header {
   
   /* Move Boost Demo Button - Inactive State */
   .inactive-move {
-    background-color: transparent;
+    background-color: white;
     color: rgb(107, 114, 128);
     border: 1px solid rgb(229, 231, 235);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   }
   
   /* Demo Carousel */
