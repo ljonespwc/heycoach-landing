@@ -1,6 +1,28 @@
 // main.js
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Did You Know Tooltip
+  const didYouKnowBadge = document.getElementById('didYouKnowBadge');
+  const didYouKnowTooltip = document.getElementById('didYouKnowTooltip');
+  const tooltipClose = document.getElementById('tooltipClose');
+
+  if (didYouKnowBadge && didYouKnowTooltip && tooltipClose) {
+    didYouKnowBadge.addEventListener('click', function() {
+      didYouKnowTooltip.classList.add('active');
+    });
+
+    tooltipClose.addEventListener('click', function() {
+      didYouKnowTooltip.classList.remove('active');
+    });
+
+    // Close tooltip when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!didYouKnowTooltip.contains(event.target) && event.target !== didYouKnowBadge) {
+        didYouKnowTooltip.classList.remove('active');
+      }
+    });
+  }
+
     // ----- Navbar Scroll Effect -----
     const navbar = document.getElementById('navbar');
     
