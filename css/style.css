@@ -1580,11 +1580,22 @@ header {
     background-color: rgba(123, 75, 241, 0.2);
   }
   
+  .move-mini-bullet {
+    background-color: rgba(249, 115, 22, 0.2);
+  }
+  
+  .crave-mini-bullet .mini-dot {
+    background-color: var(--primary);
+  }
+  
+  .move-mini-bullet .mini-dot {
+    background-color: var(--secondary);
+  }
+  
   .mini-dot {
     width: 0.375rem;
     height: 0.375rem;
     border-radius: 9999px;
-    background-color: var(--primary);
   }
   
   .step-item p {
@@ -1594,9 +1605,16 @@ header {
   
   .step-summary-heading {
     font-size: 0.9rem;
-    color: var(--primary);
     margin-bottom: 0.75rem;
     font-weight: 600;
+  }
+  
+  .crave-bg + h3 + .step-list .step-summary-heading {
+    color: var(--primary);
+  }
+  
+  .move-bg + h3 + .step-list .step-summary-heading {
+    color: var(--secondary);
   }
   
   .step-subtitle {
